@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://3ljpsb7tvf2q"]
+
+[ext_resource type="Script" path="res://prueba/Jugador.gd" id="1_vh58u"]
+[ext_resource type="Texture2D" uid="uid://ct42lq2ah0a1x" path="res://icon.svg" id="2_ttbyg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e7pl"]
+size = Vector2(123, 125)
+
+[node name="Jugador" type="CharacterBody2D"]
+script = ExtResource("1_vh58u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ttbyg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_1e7pl")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+
+[node name="CadenciaDisparo" type="Timer" parent="."]
+wait_time = 0.162
