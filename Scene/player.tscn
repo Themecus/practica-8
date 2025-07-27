@@ -39,8 +39,8 @@ radius = 81.6556
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(1.77721, 1.6447)
-collision_layer = 0
-collision_mask = 0
+collision_layer = 8
+collision_mask = 16
 script = ExtResource("1_c4nsw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -56,8 +56,8 @@ scale = Vector2(1.01887, 1.09262)
 shape = SubResource("RectangleShape2D_th2u2")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-6.18948, -29.1847)
@@ -70,5 +70,6 @@ position = Vector2(3.37608, -74.1777)
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 0.611
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

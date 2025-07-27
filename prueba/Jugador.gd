@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var speed := 300.0
 @export var bullet_speed := 600.0
 @export var fire_rate := 0.2  # Segundos entre disparos
-
 var can_shoot := true
 
 func _physics_process(delta):

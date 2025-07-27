@@ -6,6 +6,7 @@ var balaJugador=load("res://Scene/bala.tscn")
 var tiempo=true
 var speedy=500
 
+
 func _process(delta):  # Usar _physics_process para movimiento
 	var input_direction = Vector2(
 	Input.get_axis("left", "right"),
@@ -41,3 +42,15 @@ func shoot():
 
 func _on_cooldown_timeout():
 	tiempo=true
+
+
+func _on_area_2d_area_entered(area):
+	queue_free()
+
+func velo():
+	speed+=400
+	print("biff")
+
+
+func _on_espacio_enemigo_eliminado(puntos):
+	pass # Replace with function body.

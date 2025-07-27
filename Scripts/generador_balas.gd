@@ -1,18 +1,21 @@
 extends Area2D
 
-var balaJugador=load("res://img/bala.png")
-var disparo=true
+var enemigoCargado=load("res://Scene/enemigo_1.tscn")
+var tiempo=true
+var random=RandomNumberGenerator.new()
+@onready var espacio = $".."
 
 func _process(delta):
 	spawner()
 
 func spawner():
-	var bala=balaJugador.instantiate()
-	if Input.is_action_pressed("shoot") and disparo==true:
-		disparo=false
+	var enemigo=enemigoCargado.instantiate()
+	if  tiempo==true:
+		tiempo=false
 		$cooldown.start()
 		print("disparo")
-		add_child(bala)
+		enemigo.position= Vector2(randf_range(-560,560),randf_range(-50,50))
+		add_child(enemigo)
 
 func _on_cooldown_timeout():
-	disparo=true
+	tiempo=true
