@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://dv214jp6xh8og"]
+
+[ext_resource type="Script" path="res://Scripts/Enemigo2.gd" id="1_y1ath"]
+[ext_resource type="Texture2D" uid="uid://bblu6eal32oei" path="res://img/enemigo2.png" id="2_uitrd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfpt3"]
+atlas = ExtResource("2_uitrd")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrfht"]
+atlas = ExtResource("2_uitrd")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1tf8"]
+atlas = ExtResource("2_uitrd")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ciy0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfpt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrfht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1tf8")
+}],
+"loop": true,
+"name": &"mover",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_okg3f"]
+radius = 48.0676
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajwxw"]
+size = Vector2(96.7031, 40.363)
+
+[node name="Enemigo2" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("1_y1ath")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ciy0p")
+animation = &"mover"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 0.36)
+shape = SubResource("CircleShape2D_okg3f")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.551056, -1.59397)
+shape = SubResource("RectangleShape2D_ajwxw")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.06017, -0.374577)
+scale = Vector2(2.59195, 1.41203)
+
+[node name="movimiento" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="movimiento" to="." method="_on_movimiento_timeout"]

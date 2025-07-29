@@ -34,8 +34,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th2u2"]
 size = Vector2(185.122, 138.779)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_i1uon"]
-radius = 81.6556
+[sub_resource type="CircleShape2D" id="CircleShape2D_1d3oc"]
+radius = 28.5762
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(1.77721, 1.6447)
@@ -57,12 +57,12 @@ shape = SubResource("RectangleShape2D_th2u2")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 132
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-6.18948, -29.1847)
-scale = Vector2(1.27836, 0.648461)
-shape = SubResource("CircleShape2D_i1uon")
+position = Vector2(-2.8134, -16.4164)
+scale = Vector2(1.84104, 1.76721)
+shape = SubResource("CircleShape2D_1d3oc")
 
 [node name="Tiro" type="Marker2D" parent="."]
 position = Vector2(3.37608, -74.1777)

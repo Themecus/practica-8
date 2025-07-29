@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://c528335ufy3xa"]
+
+[ext_resource type="Script" path="res://Scripts/bala_enemigo.gd" id="1_vk18e"]
+[ext_resource type="Texture2D" uid="uid://j5dgl8q7o0f3" path="res://img/lazer.png" id="1_vy2gk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ealcj"]
+radius = 72.1715
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0kqq"]
+atlas = ExtResource("1_vy2gk")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04r06"]
+atlas = ExtResource("1_vy2gk")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3fdj"]
+atlas = ExtResource("1_vy2gk")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8vxk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0kqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04r06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3fdj")
+}],
+"loop": true,
+"name": &"bala",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyejt"]
+size = Vector2(31.1127, 45.9619)
+
+[node name="balaEnemigo" type="CharacterBody2D"]
+scale = Vector2(-0.508394, 0.407062)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_vk18e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.03125, -0.222725)
+rotation = 1.65442
+scale = Vector2(0.26233, -0.172002)
+shape = SubResource("CircleShape2D_ealcj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k8vxk")
+animation = &"bala"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.0118027, 9.24444)
+shape = SubResource("RectangleShape2D_lyejt")

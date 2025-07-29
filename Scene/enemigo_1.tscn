@@ -1,7 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfmktcg0dqxur"]
+[gd_scene load_steps=17 format=3 uid="uid://dfmktcg0dqxur"]
 
 [ext_resource type="Script" path="res://Scripts/Enemigo1.gd" id="1_fb3ar"]
+[ext_resource type="Texture2D" uid="uid://cj6w63d1xvc6w" path="res://img/muerte.png" id="2_bqvs0"]
 [ext_resource type="Texture2D" uid="uid://d3xusv7faiqgg" path="res://img/enemigo.png" id="2_p33t4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrdqs"]
+atlas = ExtResource("2_bqvs0")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiaxx"]
+atlas = ExtResource("2_bqvs0")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx56h"]
+atlas = ExtResource("2_bqvs0")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ggkp"]
+atlas = ExtResource("2_bqvs0")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijuo6"]
+atlas = ExtResource("2_bqvs0")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etgnf"]
+atlas = ExtResource("2_bqvs0")
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmyfe"]
 atlas = ExtResource("2_p33t4")
@@ -21,6 +46,29 @@ region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pqdhq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrdqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiaxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx56h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ggkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijuo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etgnf")
+}],
+"loop": true,
+"name": &"morir",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pmyfe")
@@ -57,7 +105,7 @@ texture_filter = 1
 position = Vector2(0.116635, 0.949902)
 scale = Vector2(1.43176, 1.39247)
 sprite_frames = SubResource("SpriteFrames_pqdhq")
-animation = &"mover"
+animation = &"morir"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.420444)
@@ -66,7 +114,7 @@ shape = SubResource("CircleShape2D_a047h")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 34
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.447876, 0.208878)
