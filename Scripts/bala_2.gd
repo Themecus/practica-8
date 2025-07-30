@@ -1,7 +1,6 @@
-extends CharacterBody2D
+extends Area2D
 
 var speed=500.0
-
 func _process(delta):
 	disparo(delta)
 

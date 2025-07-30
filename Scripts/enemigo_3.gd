@@ -6,7 +6,7 @@ var balaEnemiga=load("res://Scene/bala_enemigo.tscn")
 var vida=4
 var SPEED = 100.0
 var bajar=true
-var tempo=300
+var tempo=100
 
 func _process(delta):
 	moverse(delta)
@@ -18,7 +18,7 @@ func moverse(delta):
 		position.y += delta * 0
 		tempo=tempo-1
 		if tempo==0:
-			tempo=300
+			tempo=100
 			print("disparo")
 			add_child(bala)
 	if bajar==true:
@@ -26,7 +26,7 @@ func moverse(delta):
 		animacion.play("mover")
 
 func _on_area_2d_area_entered(area):
-	if vida==0:
+	if vida <= 0:
 		espacio.puntuaje.emit(5)
 		queue_free()
 	else:

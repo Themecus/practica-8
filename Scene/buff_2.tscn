@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://gvqj72rblusc"]
+
+[ext_resource type="Script" path="res://Scripts/buff_1.gd" id="1_rk26d"]
+[ext_resource type="Texture2D" uid="uid://d4cdwtocv4up2" path="res://img/buff2.png" id="2_uiojl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnvyo"]
+size = Vector2(60, 62)
+
+[node name="buff2" type="Area2D" groups=["buffos1"]]
+position = Vector2(1, 1)
+collision_layer = 256
+collision_mask = 8
+script = ExtResource("1_rk26d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rnvyo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uiojl")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

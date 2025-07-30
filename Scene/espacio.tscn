@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c64ayykyjmg6k"]
+[gd_scene load_steps=8 format=3 uid="uid://c64ayykyjmg6k"]
 
 [ext_resource type="Script" path="res://Scripts/espacio.gd" id="1_rw0ra"]
 [ext_resource type="PackedScene" uid="uid://dc7fx0jcryrxg" path="res://Scene/player.tscn" id="1_tof4u"]
 [ext_resource type="PackedScene" uid="uid://c631m8o4pbemq" path="res://Scene/rompebalas.tscn" id="2_2pn3s"]
 [ext_resource type="PackedScene" uid="uid://c4ow2gn717nu" path="res://Scene/generador_enemigos.tscn" id="4_a12y0"]
 [ext_resource type="PackedScene" uid="uid://cxeei5mf64pu3" path="res://Scene/pared.tscn" id="5_417dl"]
+[ext_resource type="PackedScene" uid="uid://gvqj72rblusc" path="res://Scene/buff_2.tscn" id="6_jj06k"]
+[ext_resource type="PackedScene" uid="uid://v6ntw6gfx2mg" path="res://Scene/enemigo_3.tscn" id="6_xy1t1"]
 
 [node name="Espacio" type="Node2D"]
 script = ExtResource("1_rw0ra")
@@ -25,7 +27,7 @@ position = Vector2(565, -157)
 scale = Vector2(90.9028, -1.6305)
 
 [node name="GeneradorEnemigos" parent="." instance=ExtResource("4_a12y0")]
-position = Vector2(582, -76)
+position = Vector2(615, 836)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 3.0
@@ -46,5 +48,17 @@ scale = Vector2(0.0666002, 35.5384)
 [node name="pared3" parent="." instance=ExtResource("5_417dl")]
 position = Vector2(584, 681)
 scale = Vector2(7.57701, 1.36564)
+
+[node name="Enemigo3" parent="." instance=ExtResource("6_xy1t1")]
+position = Vector2(581.606, -43.2242)
+
+[node name="buff2" parent="." instance=ExtResource("6_jj06k")]
+position = Vector2(736, 318)
+
+[node name="Enemigo4" parent="." instance=ExtResource("6_xy1t1")]
+position = Vector2(509.606, 43.7758)
+
+[node name="Enemigo5" parent="." instance=ExtResource("6_xy1t1")]
+position = Vector2(620.606, 85.7758)
 
 [connection signal="puntuaje" from="." to="." method="_on_puntuaje"]

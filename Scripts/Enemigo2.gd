@@ -24,7 +24,7 @@ func movimientoErratico(delta):
 	lados=-lados
 
 func _on_area_2d_area_entered(area):
-	if vida==0:
+	if vida <= 0:
 		espacio.puntuaje.emit(3)
 		queue_free()
 	else:

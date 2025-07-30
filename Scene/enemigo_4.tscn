@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://4qiv03avkj3y"]
+
+[ext_resource type="Script" path="res://Scripts/enemigo_4.gd" id="1_21vag"]
+[ext_resource type="Texture2D" uid="uid://djbufuu4ij5p" path="res://img/enemigo4.png" id="2_g6pi4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylccj"]
+atlas = ExtResource("2_g6pi4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu1ld"]
+atlas = ExtResource("2_g6pi4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6yuw"]
+atlas = ExtResource("2_g6pi4")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nltng"]
+atlas = ExtResource("2_g6pi4")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5jigy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylccj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu1ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6yuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nltng")
+}],
+"loop": true,
+"name": &"mover",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1thb0"]
+radius = 48.0676
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urngu"]
+size = Vector2(96.7031, 40.363)
+
+[node name="Enemigo4" type="CharacterBody2D"]
+position = Vector2(-0.393951, 0.775848)
+script = ExtResource("1_21vag")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5jigy")
+animation = &"mover"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 0.36)
+shape = SubResource("CircleShape2D_1thb0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.551056, -1.59397)
+shape = SubResource("RectangleShape2D_urngu")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.06017, -0.374577)
+scale = Vector2(2.59195, 1.41203)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_movimiento_timeout"]

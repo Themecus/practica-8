@@ -2,9 +2,13 @@ extends CharacterBody2D
 
 var speed= 310.0  # Usando @export para ajustar desde el Inspector
 var balaJugador=load("res://Scene/bala.tscn")
+var balaJugador2=load("res://Scene/bala_2.tscn")
 @onready var animated_sprite = $AnimatedSprite2D  # Nombre más descriptivo
 var tiempo=true
+var tiempo2=true
 var speedy=500
+var poder=0
+var poder2=0
 
 
 func _process(delta):  # Usar _physics_process para movimiento
@@ -32,7 +36,30 @@ func update_animations(x_input):
 		animated_sprite.play("normal")
 
 func shoot():
-	if Input.is_action_pressed("shoot") and tiempo==true:
+	shoot1()
+	shoot2()
+	shoot3()
+
+func shoot3():
+	if Input.is_action_pressed("shoot") and tiempo2==true and poder2>0:
+		tiempo2=false
+		poder2-=1
+		$cooldown2.start()
+		var bala=balaJugador2.instantiate()
+		bala.speed=speedy
+		bala.position=$Tiro.global_position
+		get_parent().add_child(bala)
+
+func shoot2():
+	if Input.is_action_pressed("shoot") and poder>0:
+		poder-=1
+		var bala=balaJugador.instantiate()
+		bala.speed=speedy
+		bala.position=$Tiro.global_position
+		get_parent().add_child(bala)
+
+func shoot1():
+	if Input.is_action_pressed("shoot") and tiempo==true and poder==0 and poder2==0:
 		tiempo=false
 		$cooldown.start()
 		var bala=balaJugador.instantiate()
@@ -43,14 +70,18 @@ func shoot():
 func _on_cooldown_timeout():
 	tiempo=true
 
+func _on_cooldown_2_timeout():
+	tiempo2=true
 
 func _on_area_2d_area_entered(area):
-	queue_free()
+	#con esto podemos diferenciar las colisiones que entran, solo debes meterlas en grupos
+	if area.is_in_group("buffos"):
+		poder=400
+	elif area.is_in_group("buffos1"):
+		poder2=20
+	else:
+		queue_free()
 
-func velo():
-	speed+=400
-	print("biff")
 
 
-func _on_espacio_enemigo_eliminado(puntos):
-	pass # Replace with function body.
+
