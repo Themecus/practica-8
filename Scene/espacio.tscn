@@ -5,21 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://c631m8o4pbemq" path="res://Scene/rompebalas.tscn" id="2_2pn3s"]
 [ext_resource type="PackedScene" uid="uid://c4ow2gn717nu" path="res://Scene/generador_enemigos.tscn" id="4_a12y0"]
 [ext_resource type="PackedScene" uid="uid://cxeei5mf64pu3" path="res://Scene/pared.tscn" id="5_417dl"]
-[ext_resource type="PackedScene" uid="uid://gvqj72rblusc" path="res://Scene/buff_2.tscn" id="6_jj06k"]
-[ext_resource type="PackedScene" uid="uid://v6ntw6gfx2mg" path="res://Scene/enemigo_3.tscn" id="6_xy1t1"]
+[ext_resource type="Texture2D" uid="uid://icj4m58eiqj2" path="res://img/espacio.png" id="6_hihsb"]
+[ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="6_kdute"]
 
 [node name="Espacio" type="Node2D"]
 script = ExtResource("1_rw0ra")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -17.0
-offset_top = -14.0
-offset_right = 1168.0
-offset_bottom = 667.0
-color = Color(0, 0, 0.239216, 1)
-
 [node name="Player" parent="." instance=ExtResource("1_tof4u")]
-position = Vector2(603, 577)
+position = Vector2(591, 595)
 scale = Vector2(0.572647, 0.640864)
 
 [node name="Rompebalas" parent="." instance=ExtResource("2_2pn3s")]
@@ -27,7 +20,7 @@ position = Vector2(565, -157)
 scale = Vector2(90.9028, -1.6305)
 
 [node name="GeneradorEnemigos" parent="." instance=ExtResource("4_a12y0")]
-position = Vector2(615, 836)
+position = Vector2(581, -59)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 3.0
@@ -49,16 +42,18 @@ scale = Vector2(0.0666002, 35.5384)
 position = Vector2(584, 681)
 scale = Vector2(7.57701, 1.36564)
 
-[node name="Enemigo3" parent="." instance=ExtResource("6_xy1t1")]
-position = Vector2(581.606, -43.2242)
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("6_kdute")
 
-[node name="buff2" parent="." instance=ExtResource("6_jj06k")]
-position = Vector2(736, 318)
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 701)
 
-[node name="Enemigo4" parent="." instance=ExtResource("6_xy1t1")]
-position = Vector2(509.606, 43.7758)
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(559, 336)
+scale = Vector2(1.04417, 1.07846)
+texture = ExtResource("6_hihsb")
 
-[node name="Enemigo5" parent="." instance=ExtResource("6_xy1t1")]
-position = Vector2(620.606, 85.7758)
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1153, 652)
 
 [connection signal="puntuaje" from="." to="." method="_on_puntuaje"]

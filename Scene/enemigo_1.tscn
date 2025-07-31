@@ -105,7 +105,7 @@ texture_filter = 1
 position = Vector2(0.116635, 0.949902)
 scale = Vector2(1.43176, 1.39247)
 sprite_frames = SubResource("SpriteFrames_pqdhq")
-animation = &"morir"
+animation = &"mover"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.420444)

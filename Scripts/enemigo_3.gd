@@ -6,7 +6,7 @@ var balaEnemiga=load("res://Scene/bala_enemigo.tscn")
 var vida=4
 var SPEED = 100.0
 var bajar=true
-var tempo=100
+var tempo=150
 
 func _process(delta):
 	moverse(delta)
@@ -18,8 +18,7 @@ func moverse(delta):
 		position.y += delta * 0
 		tempo=tempo-1
 		if tempo==0:
-			tempo=100
-			print("disparo")
+			tempo=150
 			add_child(bala)
 	if bajar==true:
 		position.y += delta * SPEED

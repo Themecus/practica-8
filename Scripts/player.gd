@@ -76,11 +76,12 @@ func _on_cooldown_2_timeout():
 func _on_area_2d_area_entered(area):
 	#con esto podemos diferenciar las colisiones que entran, solo debes meterlas en grupos
 	if area.is_in_group("buffos"):
-		poder=400
+		poder=200
 	elif area.is_in_group("buffos1"):
 		poder2=20
 	else:
 		queue_free()
+		get_tree().change_scene_to_file("res://Scene/salida.tscn")
 
 
 
