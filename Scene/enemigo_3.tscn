@@ -94,6 +94,10 @@ scale = Vector2(2.59195, 1.41203)
 wait_time = 2.0
 autostart = true
 
+[node name="enfriamiento" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_movimiento_timeout"]
+[connection signal="timeout" from="enfriamiento" to="." method="_on_enfriamiento_timeout"]

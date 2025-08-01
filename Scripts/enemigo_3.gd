@@ -6,7 +6,7 @@ var balaEnemiga=load("res://Scene/bala_enemigo.tscn")
 var vida=4
 var SPEED = 100.0
 var bajar=true
-var tempo=450
+var tempo=true
 
 func _process(delta):
 	moverse(delta)
@@ -16,9 +16,9 @@ func moverse(delta):
 		var bala=balaEnemiga.instantiate()
 		bala.position=Vector2(-0.104, 24.493)
 		position.y += delta * 0
-		tempo=tempo-1
-		if tempo<=0:
-			tempo=450
+		if tempo==true:
+			$enfriamiento.start()
+			tempo=false
 			add_child(bala)
 	if bajar==true:
 		position.y += delta * SPEED
@@ -36,3 +36,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_movimiento_timeout():
 	bajar=false
+
+
+func _on_enfriamiento_timeout():
+	tempo=true
