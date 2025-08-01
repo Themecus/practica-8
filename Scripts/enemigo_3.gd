@@ -17,7 +17,7 @@ func moverse(delta):
 		bala.position=Vector2(-0.104, 24.493)
 		position.y += delta * 0
 		tempo=tempo-1
-		if tempo==0:
+		if tempo<=0:
 			tempo=450
 			add_child(bala)
 	if bajar==true:
